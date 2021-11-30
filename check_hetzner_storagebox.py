@@ -35,7 +35,7 @@ def check_sb(user: str, password: str, id: int, warning_percent: int, critical_p
         critical_mb = quota * critical_percent / 100
         if name == "":
             name = data["server"]
-        percentage: int = round(used / quota, 0)
+        percentage: int = round(used / quota * 100, 0)
         monitoring_status: int = OK
         status: str = "OK"
         if percentage >= critical_percent:
@@ -62,12 +62,12 @@ def check_sb(user: str, password: str, id: int, warning_percent: int, critical_p
 
 parser = argparse.ArgumentParser(
     description='Nagios/Icinga Plugin to measure disk usage of Hetzner Storagebox via API.')
-parser.add_argument('-u' '--user', dest='user', help='Hetzner API user', required=True)
-parser.add_argument('-p' '--password', dest='password', help='Hetzner API password', required=True)
-parser.add_argument('-id' '--identifier', dest='id', type=int, help='ID of Hetzner Storagebox', required=True)
-parser.add_argument('-w' '--warning', dest='warning_percent', default=90,
+parser.add_argument('-u', '--user', dest='user', help='Hetzner API user', required=True)
+parser.add_argument('-p', '--password', dest='password', help='Hetzner API password', required=True)
+parser.add_argument('-id', '--identifier', dest='id', type=int, help='ID of Hetzner Storagebox', required=True)
+parser.add_argument('-w', '--warning', dest='warning_percent', type=int, default=90,
                     help='Percentage threshold the status "WARNING"')
-parser.add_argument('-c' '--critical', dest='critical_percent', default=95,
+parser.add_argument('-c' '--critical', dest='critical_percent', type=int, default=95,
                     help='Percentage threshold the status "CRITICAL"')
 
 args = parser.parse_args()
