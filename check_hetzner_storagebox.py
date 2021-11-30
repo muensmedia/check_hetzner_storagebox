@@ -67,7 +67,7 @@ parser.add_argument('-p', '--password', dest='password', help='Hetzner API passw
 parser.add_argument('-id', '--identifier', dest='id', type=int, help='ID of Hetzner Storagebox', required=True)
 parser.add_argument('-w', '--warning', dest='warning_percent', type=int, default=90,
                     help='Percentage threshold the status "WARNING"')
-parser.add_argument('-c' '--critical', dest='critical_percent', type=int, default=95,
+parser.add_argument('-c', '--critical', dest='critical_percent', type=int, default=95,
                     help='Percentage threshold the status "CRITICAL"')
 
 args = parser.parse_args()
