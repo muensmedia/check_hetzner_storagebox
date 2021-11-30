@@ -1,9 +1,9 @@
-name: Build and Release latest Tag
+name: Build tagged release
 
 on:
   push:
-    branches:
-      - "master"
+    tags:
+      - "v*"
 
 jobs:
   build-release:
@@ -23,9 +23,7 @@ jobs:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: true
-          title: "Latest Binary Build"
+          prerelease: false
           files: |
             check_hetzner_storagebox-amd64
 
