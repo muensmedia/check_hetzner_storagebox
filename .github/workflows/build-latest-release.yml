@@ -22,7 +22,7 @@ jobs:
           cache: 'pip'
       - run: pip install -r requirements.txt
       - run: pip install -U nuitka
-      - run: python -m nuitka --onefile -o check_hetzner_storagebox-amd64 check_hetzner_storagebox.py
+      - run: python -m nuitka --onefile --assume-yes-for-downloads -o check_hetzner_storagebox-amd64 check_hetzner_storagebox.py
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
