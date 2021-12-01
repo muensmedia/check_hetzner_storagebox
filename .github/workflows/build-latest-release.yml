@@ -1,4 +1,4 @@
-name: Build and Release latest Tag
+name: 'Build prerelease: latest'
 
 on:
   push:
