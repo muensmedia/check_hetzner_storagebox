@@ -32,6 +32,58 @@ Downloads binary from releases and set executable bit.
     wget https://github.com/muensmedia/check_hetzner_storagebox/releases/download/latest/check_hetzner_storagebox-amd64 -O check_hetzner_storagebox
     chmod +x check_hetzner_storagebox
 
+## Example for Icinga2 CheckCommand
+
+<details>
+    <summary>
+Click to see example for Icinga2 CheckCommand
+</summary>
+
+    object CheckCommand "check_hetzner_storagebox" {
+    import "plugin-check-command"
+    command = [ "/etc/icinga2-scripts/check_hetzner_storagebox" ]
+    timeout = 1m
+    arguments += {
+            "-c" = {
+                description = "Critical"
+                repeat_key = false
+                required = false
+                value = "$critical$"
+            }
+            "-id" = {
+                description = "ID of the Storagebox"
+                repeat_key = false
+                required = true
+                value = "$storagebox_id$"
+            }
+            "-p" = {
+                description = "Password"
+                repeat_key = false
+                required = true
+                value = "$storagebox_password$"
+            }
+            "-u" = {
+                description = "Username"
+                repeat_key = false
+                required = true
+                value = "$storagebox_username$"
+            }
+            "-w" = {
+                description = "Warning"
+                repeat_key = false
+                required = true
+                value = "$warning$"
+            }
+        }
+        vars.critical = "90"
+        vars.storagebox_password = "default-password"
+        vars.storagebox_username = "default-username"
+        vars.warning = "80"
+    }
+
+
+</details>
+
 ## CLI Usage:
 
     usage: check_hetzner_storagebox [-h] -u USER -p PASSWORD -id ID [-w WARNING_PERCENT] [-c CRITICAL_PERCENT]
