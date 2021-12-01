@@ -1,4 +1,7 @@
 # Nagios/Icinga2 Plugin: Monitor Disk Usage of Hetzner Storagebox
+![Build tagged release](https://github.com/muensmedia/check_hetzner_storagebox/actions/workflows/build-tagged-release.yml/badge.svg)
+![Build latest release](https://github.com/muensmedia/check_hetzner_storagebox/actions/workflows/build-latest-release.yml/badge.svg)
+
 
 A plugin that monitors disk usage of a Hetzner StorageBox using the [Hetzner API](https://robot.your-server.de/doc/webservice/de.html#get-storagebox).
 Depending on the used percentage the status (`OK`, `WARNING`, `CRITICAL` or `UNKNOWN`) is returned.
