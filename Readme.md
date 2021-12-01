@@ -7,12 +7,12 @@ Depending on the used percentage the status (`OK`, `WARNING`, `CRITICAL` or `UNK
 
 Downloads binary from releases and set executable bit.
 
-    wget https://github.com/muensmedia/check_hetzner_storagebox/releases/download/latest/check_hetzner_storagebox-amd64
-    chmod +x https://github.com/muensmedia/check_hetzner_storagebox/releases/download/latest/check_hetzner_storagebox-amd64
+    wget https://github.com/muensmedia/check_hetzner_storagebox/releases/download/latest/check_hetzner_storagebox-amd64 -O check_hetzner_storagebox
+    chmod +x check_hetzner_storagebox
 
 ## CLI Usage:
 
-    usage: check_hetzner_storagebox-amd64 [-h] -u USER -p PASSWORD -id ID [-w WARNING_PERCENT] [-c CRITICAL_PERCENT]
+    usage: check_hetzner_storagebox [-h] -u USER -p PASSWORD -id ID [-w WARNING_PERCENT] [-c CRITICAL_PERCENT]
     
     Nagios/Icinga Plugin to measure disk usage of Hetzner Storagebox via API.
     
