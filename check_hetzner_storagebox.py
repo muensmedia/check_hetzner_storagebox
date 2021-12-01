@@ -13,7 +13,7 @@ UNKNOWN = 3
 
 api_url = "https://robot-ws.your-server.de/storagebox/{id}"
 
-status_str = "{status} - {text} | {label}={value}{unit};{warn};{crit};{min};{max}"
+status_str = "{status} - {text} | {label}={value} {unit};{warn};{crit};{min};{max}"
 status_str_no_data = "{status} - {text} | UNKOWN=0MB;0;0;0;0"
 
 
