@@ -4,7 +4,7 @@
 
 
 A plugin that monitors disk usage of a Hetzner StorageBox using
-the [Hetzner API](https://robot.your-server.de/doc/webservice/de.html#get-storagebox). Depending on the used percentage
+the [Hetzner API](https://api.hetzner.com/v1/storage_boxes). Depending on the used percentage
 the status (`OK`, `WARNING`, `CRITICAL` or `UNKNOWN`) is returned.
 
 ## Preparation
