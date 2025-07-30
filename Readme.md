@@ -77,7 +77,7 @@ Click to see example for Icinga2 CheckCommand
 
 ## CLI Usage:
 
-    usage: check_hetzner_storagebox [-h] -u USER -p PASSWORD -id ID [-w WARNING_PERCENT] [-c CRITICAL_PERCENT]
+    usage: check_hetzner_storagebox [-h] -api SecretAPIKey -id ID [-w WARNING_PERCENT] [-c CRITICAL_PERCENT]
     
     Nagios/Icinga Plugin to measure disk usage of Hetzner Storagebox via API.
     
