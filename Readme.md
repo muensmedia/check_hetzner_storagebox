@@ -9,7 +9,7 @@ the status (`OK`, `WARNING`, `CRITICAL` or `UNKNOWN`) is returned.
 
 ## Preparation
 
-- Get the credentials for the Robot-Webservice API through
+- Get the credentials for the Hetzner Console API through
   the [Hetzner Console](https://console.hetzner.com)
     - You can create the API token under `Security`/`API Tokens`/`Create API Token` (DE: `Sicherheit`
       /`API Token`/`API Token hinzufügen`)
