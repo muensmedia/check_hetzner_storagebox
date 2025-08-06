@@ -4,26 +4,24 @@
 
 
 A plugin that monitors disk usage of a Hetzner StorageBox using
-the [Hetzner API](https://robot.your-server.de/doc/webservice/de.html#get-storagebox). Depending on the used percentage
+the [Hetzner API](https://api.hetzner.com/v1/storage_boxes). Depending on the used percentage
 the status (`OK`, `WARNING`, `CRITICAL` or `UNKNOWN`) is returned.
 
 ## Preparation
 
-- Get the credentials for the Robot-Webservice API through
-  the [Hetzner Robot Webservice User Interface](https://robot.your-server.de/)
-    - You can create the credentials under `User Icon`/`Settings`/`Webservice and app Settings` (DE: `Nutzer Icon`
-      /`Einstellungen`/`Webservice- und App-Einstellungen`)
-    - The password is set by yourself, the username gets send to you via E-Mail
+- Get the credentials for the Hetzner Console API through
+  the [Hetzner Console](https://console.hetzner.com)
+    - You can create the API token under `Security`/`API Tokens`/`Create API Token` (DE: `Sicherheit`
+      /`API Token`/`API Token hinzufügen`)
 - Get the id of your storagebox
     - Through the browser
-        - Access [https://robot-ws.your-server.de/storagebox](https://robot-ws.your-server.de/storagebox)
+        - Access [https://console.hetzner.com](https://console.hetzner.com)
         - Enter username and password you set in the previous step
-        - Now you see a JSON-String containing Information of all storageboxes in your account
-        - Find the (numeric) value of the `id` field belonging to the storagebox you want to query
+        - Go to Storage Boxes
+        - under name/id in the second column is your id (without #)
     - Using cURL
-        - Execute `curl -u user:password https://robot-ws.your-server.de/storagebox` (substitute `user` and `password`
-          accordingly)
-        - Find the (numeric) value of the `id` field belonging to the storagebox you want to query
+        - Execute ` curl -H "Authorization: Bearer YourAPIToken" https://api.hetzner.com/v1/storage_boxes` (substitute `YourAPIToken` accordingly)
+        - You will get all data from all storages you own. Search for key `id`.
 
 ## Setup
 
@@ -56,17 +54,11 @@ Click to see example for Icinga2 CheckCommand
                 required = true
                 value = "$storagebox_id$"
             }
-            "-p" = {
-                description = "Password"
+            "-api" = {
+                description = "API key"
                 repeat_key = false
                 required = true
-                value = "$storagebox_password$"
-            }
-            "-u" = {
-                description = "Username"
-                repeat_key = false
-                required = true
-                value = "$storagebox_username$"
+                value = "$storagebox_api_key$"
             }
             "-w" = {
                 description = "Warning"
@@ -76,8 +68,7 @@ Click to see example for Icinga2 CheckCommand
             }
         }
         vars.critical = "90"
-        vars.storagebox_password = "default-password"
-        vars.storagebox_username = "default-username"
+        vars.storagebox_api_key = "default-password"
         vars.warning = "80"
     }
 
@@ -86,15 +77,13 @@ Click to see example for Icinga2 CheckCommand
 
 ## CLI Usage:
 
-    usage: check_hetzner_storagebox [-h] -u USER -p PASSWORD -id ID [-w WARNING_PERCENT] [-c CRITICAL_PERCENT]
+    usage: check_hetzner_storagebox [-h] -api SecretAPIKey -id ID [-w WARNING_PERCENT] [-c CRITICAL_PERCENT]
     
     Nagios/Icinga Plugin to measure disk usage of Hetzner Storagebox via API.
     
     optional arguments:
       -h, --help            show this help message and exit
-      -u USER, --user USER  Hetzner API user
-      -p PASSWORD, --password PASSWORD
-                            Hetzner API password
+      -api                  Hetzner API Key
       -id ID, --identifier ID
                             ID of Hetzner Storagebox
       -w WARNING_PERCENT, --warning WARNING_PERCENT
