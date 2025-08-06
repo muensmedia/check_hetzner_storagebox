@@ -21,7 +21,7 @@ the status (`OK`, `WARNING`, `CRITICAL` or `UNKNOWN`) is returned.
         - under name/id in the second column is your id (without #)
     - Using cURL
         - Execute ` curl -H "Authorization: Bearer YourAPIToken" https://api.hetzner.com/v1/storage_boxes` (substitute `YourAPIToken` accordingly)
-        - You will get all data from all storages you own
+        - You will get all data from all storages you own. Search for key `id`.
 
 ## Setup
 
