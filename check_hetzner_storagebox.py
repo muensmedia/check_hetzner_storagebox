@@ -29,7 +29,7 @@ def give_back(status: int, filled_in_status_str: str):
 
 def check_sb(api_key: str, id: int, warning_percent: int, critical_percent: int):
     """
-    Method that accesses the Hetzner Robot Webservice API, reads out StorageBox Usage and Quota and calls the give_back() method to indicate the results.
+    Method that accesses the Hetzner API, reads out StorageBox usage and quota and calls the give_back() method to indicate the results.
     :param api_key: API token for authorization
     :param id: StorageBox ID
     :param warning_percent: Percentage (0-100), when usage surpasses this value the status "WARNING" is issued
